@@ -47,18 +47,22 @@ const y = canvas.height / 2;
 const player = new Player (x, y, 30, 'blue');
 player.draw ();
 
+
+
 const projectiles = [];
 
 function animate () {
   requestAnimationFrame(animate)
-  projectiles.forEach((projectile)
-    => {
+  projectiles.forEach((projectile) => {
     projectile.update()
   })
 }
 
 addEventListener ('click', (event) => 
 {
+    const angle = Math.atan2(event.clientY - canvas.height / 2, event.clientX - canvas.width / 2);
+ 
+   console.log(angle) 
   projectiles.push(
       new Projectile(canvas.width / 2, canvas.height / 2, 5, 'red', {
     x: 1,
